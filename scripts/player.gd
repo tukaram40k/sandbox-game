@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 200
+var speed = 100
 var player_state
 
 func _physics_process(delta):
@@ -37,3 +37,6 @@ func play_animation(dir):
 			$AnimatedSprite2D.play("run-a")
 		if dir.x < -0.5 and dir.y < -0.5:
 			$AnimatedSprite2D.play("run-a")
+
+func player():
+	pass
