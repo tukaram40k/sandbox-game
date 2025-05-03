@@ -1,8 +1,8 @@
 [gd_scene load_steps=44 format=3 uid="uid://ctr42dmeryu1b"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_klxtj"]
-[ext_resource type="Texture2D" uid="uid://bj7e1l0gr0m4m" path="res://assets/Slime1/Idle/Slime1_Idle_full.png" id="1_sri1o"]
-[ext_resource type="Texture2D" uid="uid://c8hjnuiycyntk" path="res://assets/Slime1/Run/Slime1_Run_full.png" id="2_3d6qi"]
+[ext_resource type="Texture2D" uid="uid://bj7e1l0gr0m4m" path="res://assets/slime/Idle/Slime1_Idle_full.png" id="1_sri1o"]
+[ext_resource type="Texture2D" uid="uid://c8hjnuiycyntk" path="res://assets/slime/Run/Slime1_Run_full.png" id="2_3d6qi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tned4"]
 atlas = ExtResource("1_sri1o")
@@ -307,7 +307,19 @@ script = ExtResource("1_klxtj")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2bbcc")
 animation = &"idle"
-frame_progress = 0.806575
+frame_progress = 0.178944
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ge1fk")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.1
+drag_top_margin = 0.1
+drag_right_margin = 0.1
+drag_bottom_margin = 0.1
