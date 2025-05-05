@@ -1,0 +1,97 @@
+[gd_scene load_steps=14 format=3 uid="uid://c08s8rkpg3idh"]
+
+[ext_resource type="Texture2D" uid="uid://cvyvnicnx1pwc" path="res://assets/Minotaur_1/Idle.png" id="1_5lga2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4puql"]
+atlas = ExtResource("1_5lga2")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcve6"]
+atlas = ExtResource("1_5lga2")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owdsf"]
+atlas = ExtResource("1_5lga2")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efkyc"]
+atlas = ExtResource("1_5lga2")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5g01v"]
+atlas = ExtResource("1_5lga2")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qo3m8"]
+atlas = ExtResource("1_5lga2")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ou0vx"]
+atlas = ExtResource("1_5lga2")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojqrb"]
+atlas = ExtResource("1_5lga2")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30a55"]
+atlas = ExtResource("1_5lga2")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvq4f"]
+atlas = ExtResource("1_5lga2")
+region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_elwyx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4puql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcve6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owdsf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efkyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5g01v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qo3m8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ou0vx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojqrb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30a55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvq4f")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mx8na"]
+radius = 19.0
+height = 50.0
+
+[node name="Minotaur" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_elwyx")
+animation = &"idle"
+frame_progress = 0.018089
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8, 45)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_mx8na")
