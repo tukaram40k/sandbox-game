@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://c08s8rkpg3idh"]
+[gd_scene load_steps=15 format=3 uid="uid://c08s8rkpg3idh"]
 
 [ext_resource type="Texture2D" uid="uid://cvyvnicnx1pwc" path="res://assets/Minotaur_1/Idle.png" id="1_5lga2"]
+[ext_resource type="Script" path="res://scripts/minotaur.gd" id="1_is20f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4puql"]
 atlas = ExtResource("1_5lga2")
@@ -77,7 +78,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mx8na"]
@@ -85,11 +86,13 @@ radius = 19.0
 height = 50.0
 
 [node name="Minotaur" type="CharacterBody2D"]
+script = ExtResource("1_is20f")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_elwyx")
 animation = &"idle"
-frame_progress = 0.018089
+frame = 8
+frame_progress = 0.753047
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-8, 45)
