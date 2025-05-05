@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=4 uid="uid://l246lmfw1bgm"]
+[gd_scene load_steps=18 format=4 uid="uid://l246lmfw1bgm"]
 
 [ext_resource type="PackedScene" uid="uid://ctr42dmeryu1b" path="res://scenes/player.tscn" id="1_s882o"]
 [ext_resource type="Texture2D" uid="uid://cr4offs78hil4" path="res://assets/undead_terrain/Water_coasts.png" id="1_y2qaq"]
 [ext_resource type="Texture2D" uid="uid://28r8snpir382" path="res://assets/undead_terrain/water_detilazation.png" id="2_2agbh"]
 [ext_resource type="Texture2D" uid="uid://iictfpekgc8u" path="res://assets/undead_terrain/Ground_rocks.png" id="3_siqlp"]
 [ext_resource type="Texture2D" uid="uid://635ksm2mnw0c" path="res://assets/undead_terrain/Objects.png" id="4_f2d32"]
+[ext_resource type="PackedScene" uid="uid://ck2isg8d54k3e" path="res://scenes/gorgon.tscn" id="6_gcoj8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e28ud"]
 texture = ExtResource("1_y2qaq")
@@ -6728,3 +6729,6 @@ tile_map_data = PackedByteArray("AAD9/wIAAQAhACUAAAD9/wMAAQAhACYAAAD+/wIAAQAiACU
 tile_set = SubResource("TileSet_y0o6i")
 
 [node name="Player" parent="." instance=ExtResource("1_s882o")]
+
+[node name="Gorgon" parent="." instance=ExtResource("6_gcoj8")]
+position = Vector2(42, -246)
