@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://ck2isg8d54k3e"]
+
+[ext_resource type="Texture2D" uid="uid://d1p7pbwi62vy8" path="res://assets/Gorgon_3/Idle.png" id="1_14ccm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dx4d8"]
+atlas = ExtResource("1_14ccm")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3effh"]
+atlas = ExtResource("1_14ccm")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rb2rs"]
+atlas = ExtResource("1_14ccm")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnfur"]
+atlas = ExtResource("1_14ccm")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukcnx"]
+atlas = ExtResource("1_14ccm")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p664l"]
+atlas = ExtResource("1_14ccm")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5g5x5"]
+atlas = ExtResource("1_14ccm")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1vawg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dx4d8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3effh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rb2rs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xnfur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukcnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p664l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5g5x5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fo2hr"]
+radius = 19.0
+height = 58.0
+
+[node name="Gorgon" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1vawg")
+animation = &"idle"
+frame_progress = 0.356105
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 47)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_fo2hr")
