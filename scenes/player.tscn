@@ -313,7 +313,7 @@ frame_progress = 0.178944
 shape = SubResource("CircleShape2D_ge1fk")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(5, 5)
+zoom = Vector2(7, 7)
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
