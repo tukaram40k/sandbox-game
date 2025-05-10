@@ -61,18 +61,19 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fo2hr"]
-radius = 19.0
-height = 58.0
+radius = 4.0
+height = 46.0
 
 [node name="Gorgon" type="CharacterBody2D"]
 script = ExtResource("1_q6smd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_1vawg")
 animation = &"idle"
 frame_progress = 0.0477464
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 47)
+position = Vector2(-7, 41)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_fo2hr")

@@ -81,20 +81,20 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mx8na"]
-radius = 19.0
-height = 50.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_51llx"]
+size = Vector2(17, 35)
 
 [node name="Minotaur" type="CharacterBody2D"]
 script = ExtResource("1_is20f")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(-0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_elwyx")
 animation = &"idle"
 frame = 8
 frame_progress = 0.753047
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-8, 45)
+position = Vector2(4, 36.5)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_mx8na")
+shape = SubResource("RectangleShape2D_51llx")

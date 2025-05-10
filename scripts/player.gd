@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 100
+var speed = 65
 var player_state
 
 func _physics_process(delta):
