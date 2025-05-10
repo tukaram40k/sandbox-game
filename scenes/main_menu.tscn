@@ -1,10 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://drjnp011ld15k"]
+[gd_scene load_steps=8 format=3 uid="uid://drjnp011ld15k"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_ft7dg"]
 [ext_resource type="Texture2D" uid="uid://cvju4hjnwwrhj" path="res://assets/background2.png" id="2_1pcec"]
+[ext_resource type="FontFile" uid="uid://cpgnfdei7jth5" path="res://fonts/GrapeSoda.ttf" id="3_j27pq"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6fxm2"]
 texture = ExtResource("2_1pcec")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ul83"]
+bg_color = Color(0.2445, 0.0828, 0.36, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hhscr"]
+bg_color = Color(0.363172, 0.0403792, 0.377428, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbmns"]
+bg_color = Color(0.298833, 0.1012, 0.44, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -24,37 +46,40 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_6fxm2")
 
-[node name="StartButton" type="Button" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -64.5
-offset_top = 52.0
-offset_right = 64.5
-offset_bottom = 143.0
+anchors_preset = -1
+anchor_left = 0.352
+anchor_top = 0.541
+anchor_right = 0.648
+anchor_bottom = 0.801
+offset_left = 0.299927
+offset_top = 0.100006
+offset_right = -0.300049
+offset_bottom = 0.0999756
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 60
+theme_override_constants/separation = 30
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_j27pq")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/hover = SubResource("StyleBoxFlat_1ul83")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hhscr")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tbmns")
 text = "Play"
 
-[node name="ExitButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -64.5
-offset_top = 154.5
-offset_right = 64.5
-offset_bottom = 245.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 60
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_j27pq")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/hover = SubResource("StyleBoxFlat_1ul83")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hhscr")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tbmns")
 text = "Exit"
 
-[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
