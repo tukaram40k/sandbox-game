@@ -22,8 +22,8 @@ var curious_inspection_time = 2.0  # How long to inspect interesting things
 
 # Target and awareness variables
 var player = null
-var detect_radius = 200  # Distance at which minotaur notices player
-var follow_radius = 300  # Max distance for following
+var detect_radius = 50  # Distance at which minotaur notices player
+var follow_radius = 100  # Max distance for following
 var personal_space = 50  # Minimum distance to maintain from player
 var aggression_threshold = 20.0  # Time following before becoming aggressive
 var time_following = 0.0
@@ -329,9 +329,9 @@ func play_animation():
 			anim_to_play = "idle"
 		State.PATROL:
 			if velocity.x > 0:
-				anim_to_play = "idle"  # Replace with walk/run animations when available
+				anim_to_play = "walk"
 			elif velocity.x < 0:
-				anim_to_play = "idle"  # Replace with walk/run animations when available
+				anim_to_play = "walk"
 			else:
 				anim_to_play = "idle"
 		State.ALERT:
@@ -340,11 +340,11 @@ func play_animation():
 			if is_inspecting:
 				anim_to_play = "idle"  # Replace with inspect animation when available
 			else:
-				anim_to_play = "idle"  # Replace with follow animation when available
+				anim_to_play = "run"
 		State.RETREAT:
-			anim_to_play = "idle"  # Replace with retreat animation when available
+			anim_to_play = "walk"
 		State.AGGRESSIVE:
-			anim_to_play = "idle"  # Replace with aggressive/attack animation when available
+			anim_to_play = "attack"
 	
 	$AnimatedSprite2D.play(anim_to_play)
 
