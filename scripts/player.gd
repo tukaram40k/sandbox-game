@@ -3,6 +3,10 @@ extends CharacterBody2D
 var speed = 65
 var player_state
 
+func _ready():
+	# Add player to the "player" group so minotaur can find it
+	add_to_group("player")
+
 func _physics_process(delta):
 	var direction = Input.get_vector("run_left", "run_right", "run_up", "run_down")
 
