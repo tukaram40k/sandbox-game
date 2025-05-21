@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=4 uid="uid://l246lmfw1bgm"]
+[gd_scene load_steps=64 format=4 uid="uid://l246lmfw1bgm"]
 
 [ext_resource type="Script" path="res://scripts/game_world.gd" id="1_8y517"]
 [ext_resource type="PackedScene" uid="uid://ctr42dmeryu1b" path="res://scenes/player.tscn" id="1_s882o"]
@@ -17,8 +17,11 @@
 [ext_resource type="Script" path="res://scripts/level_exit.gd" id="12_0akx1"]
 [ext_resource type="Script" path="res://scripts/area_2d.gd" id="16_ovihk"]
 [ext_resource type="Script" path="res://scripts/area_2d_2.gd" id="17_8j3gh"]
+[ext_resource type="Texture2D" uid="uid://chnxicmu0sb5q" path="res://assets/Gorgon_3/gorgon-part-2.png" id="18_nmm3g"]
 [ext_resource type="Script" path="res://scripts/area_2d_3.gd" id="19_ijlfj"]
+[ext_resource type="Texture2D" uid="uid://dlbvi5r4r7hbx" path="res://assets/Gorgon_3/gorgon-part-3.png" id="20_5w4qn"]
 [ext_resource type="Script" path="res://scripts/area_2d_4.gd" id="21_jyqok"]
+[ext_resource type="Texture2D" uid="uid://bme64id7wp1t4" path="res://assets/Gorgon_3/gorgon-part-1.png" id="22_7uja6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e28ud"]
 texture = ExtResource("1_y2qaq")
@@ -8694,7 +8697,7 @@ radius = 40.0125
 radius = 23.1948
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hgswn"]
-radius = 19.6469
+radius = 23.0217
 
 [node name="GameWorld" type="Node2D"]
 script = ExtResource("1_8y517")
@@ -8924,19 +8927,34 @@ shape = SubResource("CircleShape2D_wat3x")
 script = ExtResource("17_8j3gh")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D2"]
-position = Vector2(423, -103)
+position = Vector2(597, 6)
 shape = SubResource("CircleShape2D_bu87m")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D2"]
+position = Vector2(590, 17)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("18_nmm3g")
 
 [node name="Area2D3" type="Area2D" parent="."]
 script = ExtResource("19_ijlfj")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D3"]
-position = Vector2(377, -450)
+position = Vector2(412, -430)
 shape = SubResource("CircleShape2D_pmmxr")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D3"]
+position = Vector2(419, -434)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("20_5w4qn")
 
 [node name="Area2D4" type="Area2D" parent="."]
 script = ExtResource("21_jyqok")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D4"]
-position = Vector2(685, -186)
+position = Vector2(670, -239)
 shape = SubResource("CircleShape2D_hgswn")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D4"]
+position = Vector2(666, -238)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("22_7uja6")
