@@ -64,8 +64,6 @@ func _ready():
 	# Start in idle state
 	change_state(State.IDLE)
 	
-	if debug_mode:
-		print("Minotaur initialized at position: ", global_position)
 
 func _physics_process(delta):
 	# Update state timer
@@ -74,8 +72,6 @@ func _physics_process(delta):
 	# Re-check for player if not found
 	if player == null:
 		find_player()
-		if player != null and debug_mode:
-			print("Player found at: ", player.global_position)
 	
 	# Handle player detection and state changes
 	if player:
@@ -103,13 +99,6 @@ func _physics_process(delta):
 	# Update animations
 	play_animation()
 	
-	# Debug logging
-	if debug_mode and Engine.get_frames_drawn() % 60 == 0:  # Log every 60 frames
-		print("Minotaur state: ", State.keys()[current_state], 
-			  " - Position: ", global_position,
-			  " - Velocity: ", velocity)
-		if player:
-			print("Distance to player: ", global_position.distance_to(player.global_position))
 
 func process_idle_state(delta):
 	velocity = Vector2.ZERO
@@ -146,8 +135,6 @@ func process_alert_state(delta):
 		# Just turn to face but don't move
 		velocity = Vector2.ZERO
 		
-		if debug_mode and state_timer < 0.1:
-			print("ALERT: Minotaur noticed player")
 		
 		# After being alert for a set time, decide whether to follow
 		if state_timer > alert_time:
@@ -155,12 +142,8 @@ func process_alert_state(delta):
 			
 			# Chance to follow the player
 			if rng.randf() < follow_chance:
-				if debug_mode:
-					print("Decided to FOLLOW player")
 				change_state(State.FOLLOW)
 			else:
-				if debug_mode:
-					print("Decided to RETREAT from player")
 				change_state(State.RETREAT)
 
 func process_follow_state(delta):
@@ -170,23 +153,17 @@ func process_follow_state(delta):
 		
 		# Check if should become aggressive after following for too long
 		if time_following > aggression_threshold && rng.randf() < aggression_chance:
-			if debug_mode:
-				print("Became AGGRESSIVE after following too long")
 			change_state(State.AGGRESSIVE)
 			return
 		
 		# Check if player is too far away to continue following
 		var distance_to_player = global_position.distance_to(player.global_position)
 		if distance_to_player > follow_radius:
-			if debug_mode:
-				print("Player too far away, RETREATING")
 			change_state(State.RETREAT)
 			return
 		
 		# Randomly decide to inspect something interesting
 		if !is_inspecting && rng.randf() < inspection_chance * delta:
-			if debug_mode:
-				print("Stopping to INSPECT something interesting")
 			start_inspection()
 			return
 		
@@ -199,13 +176,9 @@ func process_follow_state(delta):
 		if distance_to_player > personal_space:
 			var direction = (player.global_position - global_position).normalized()
 			velocity = direction * follow_speed
-			if debug_mode and Engine.get_frames_drawn() % 60 == 0:
-				print("Following player - distance: ", distance_to_player)
 		else:
 			# Maintain personal space
 			velocity = Vector2.ZERO
-			if debug_mode and Engine.get_frames_drawn() % 60 == 0:
-				print("Maintaining personal space")
 
 func process_retreat_state(delta):
 	# Reset follow timer when retreating
@@ -217,8 +190,6 @@ func process_retreat_state(delta):
 	
 	# If close to home, return to patrol state
 	if global_position.distance_to(home_position) < patrol_point_reach_distance:
-		if debug_mode:
-			print("Reached home, returning to PATROL")
 		change_state(State.PATROL)
 
 func process_aggressive_state(delta):
@@ -227,17 +198,11 @@ func process_aggressive_state(delta):
 		var direction = (player.global_position - global_position).normalized()
 		velocity = direction * chase_speed
 		
-		if debug_mode and Engine.get_frames_drawn() % 60 == 0:
-			print("Chasing player aggressively")
 		
 		# If lost sight of player or got too far, retreat
 		if global_position.distance_to(player.global_position) > follow_radius * 1.5:
-			if debug_mode:
-				print("Lost player during chase, RETREATING")
 			change_state(State.RETREAT)
 	else:
-		if debug_mode:
-			print("Lost player reference, RETREATING")
 		change_state(State.RETREAT)
 
 func handle_player_awareness(delta):
@@ -248,14 +213,10 @@ func handle_player_awareness(delta):
 	
 	# Detect player when close enough
 	if (current_state == State.IDLE || current_state == State.PATROL) and distance_to_player < detect_radius:
-		if debug_mode:
-			print("Player detected at distance: ", distance_to_player)
 		change_state(State.ALERT)
 	
 	# Lose interest if player is too far away while following
 	elif current_state == State.FOLLOW and distance_to_player > follow_radius:
-		if debug_mode:
-			print("Player too far away, losing interest")
 		change_state(State.RETREAT)
 
 func start_inspection():
@@ -277,14 +238,10 @@ func process_inspection(delta):
 	
 	# When finished inspecting, resume following
 	if inspection_timer > curious_inspection_time:
-		if debug_mode:
-			print("Finished inspecting, resuming follow")
 		is_inspecting = false
 		# No need to change state, already in FOLLOW state
 
 func change_state(new_state):
-	if debug_mode:
-		print("Minotaur changing state: ", State.keys()[current_state], " -> ", State.keys()[new_state])
 	
 	previous_state = current_state
 	current_state = new_state
@@ -355,24 +312,18 @@ func find_player():
 	var player_nodes = get_tree().get_nodes_in_group("player")
 	if player_nodes.size() > 0:
 		player = player_nodes[0]  # Get the first player
-		if debug_mode:
-			print("Found player via group: ", player)
 		return
 	
 	# Method 2: Try to find by node path
 	if player == null:
 		if has_node("/root/game_world/Player") or has_node("/root/Player"):
 			player = get_node_or_null("/root/game_world/Player") if has_node("/root/game_world/Player") else get_node_or_null("/root/Player")
-			if player and debug_mode:
-				print("Found player via node path: ", player)
 			return
 	
 	# Method 3: Search for any node with "player" in the name
 	if player == null:
 		var root = get_tree().root
 		player = find_player_recursive(root)
-		if player and debug_mode:
-			print("Found player via recursive search: ", player)
 		return
 	
 	# Method 4: Last resort - find any node with player() method
@@ -381,8 +332,6 @@ func find_player():
 		for potential in potential_players:
 			if potential.has_method("player") and potential != self:
 				player = potential
-				if debug_mode:
-					print("Found player via player() method: ", player)
 				return
 	
 	if player == null and debug_mode:
