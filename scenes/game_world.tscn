@@ -8688,16 +8688,16 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wat3x"]
-radius = 50.01
+radius = 30.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bu87m"]
-radius = 40.0125
+radius = 23.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pmmxr"]
-radius = 23.1948
+radius = 11.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hgswn"]
-radius = 23.0217
+radius = 13.0384
 
 [node name="GameWorld" type="Node2D"]
 script = ExtResource("1_8y517")
@@ -8767,7 +8767,7 @@ frame_progress = 0.059679
 script = ExtResource("12_0akx1")
 
 [node name="Gorgon" parent="." instance=ExtResource("6_gcoj8")]
-position = Vector2(3, -183)
+position = Vector2(94, -174)
 
 [node name="Minotaur" parent="." instance=ExtResource("7_kjyet")]
 position = Vector2(656, -164)
@@ -8920,17 +8920,17 @@ polygon = PackedVector2Array(-43, 48, -38, 44, -29, 45, -23, 48, -25, 53, -34, 5
 script = ExtResource("16_ovihk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(143, -283)
+position = Vector2(143, -287)
 shape = SubResource("CircleShape2D_wat3x")
 
 [node name="Area2D2" type="Area2D" parent="."]
 script = ExtResource("17_8j3gh")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D2"]
-position = Vector2(597, 6)
+position = Vector2(594, 27)
 shape = SubResource("CircleShape2D_bu87m")
 
-[node name="Sprite2D" type="Sprite2D" parent="Area2D2"]
+[node name="TailPartSprite" type="Sprite2D" parent="Area2D2"]
 position = Vector2(590, 17)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("18_nmm3g")
@@ -8939,11 +8939,12 @@ texture = ExtResource("18_nmm3g")
 script = ExtResource("19_ijlfj")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D3"]
-position = Vector2(412, -430)
+position = Vector2(431, -445)
 shape = SubResource("CircleShape2D_pmmxr")
 
-[node name="Sprite2D" type="Sprite2D" parent="Area2D3"]
-position = Vector2(419, -434)
+[node name="BodyPartSprite" type="Sprite2D" parent="Area2D3"]
+position = Vector2(433, -441)
+rotation = -1.1205
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("20_5w4qn")
 
@@ -8951,10 +8952,11 @@ texture = ExtResource("20_5w4qn")
 script = ExtResource("21_jyqok")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D4"]
-position = Vector2(670, -239)
+position = Vector2(667, -239)
 shape = SubResource("CircleShape2D_hgswn")
 
-[node name="Sprite2D" type="Sprite2D" parent="Area2D4"]
+[node name="HeadPartSprite" type="Sprite2D" parent="Area2D4"]
 position = Vector2(666, -238)
+rotation = -1.84132
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("22_7uja6")

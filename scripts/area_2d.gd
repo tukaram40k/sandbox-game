@@ -4,6 +4,8 @@ signal final_zone_activated
 
 @export var required_zones_count: int = 3  # Сколько зон нужно пройти
 
+var ready_to_craft: bool = false
+
 func _ready() -> void:
 	print("Финальная зона инициализирована")
 	
@@ -19,14 +21,8 @@ func _ready() -> void:
 
 # Функция для ручного тестирования из редактора
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_accept"):  # Нажатие пробела для тестирования
-		print("Тестирование финальной зоны вручную")
-		var game_manager = get_node_or_null("/root/GameWorld")
-		if game_manager:
-			var zones_completed = game_manager.get_completed_zones_count()
-			print("Активировано зон:", zones_completed, "из", required_zones_count)
-		else:
-			print("GameManager не найден!")
+	if Input.is_action_just_pressed("ui_accept") and ready_to_craft:
+		$"../Gorgon/AnimatedSprite2D".visible = true
 
 func _on_body_entered(body: Node) -> void:
 	print("Что-то вошло в финальную зону:", body.name)
@@ -64,7 +60,7 @@ func _on_body_entered(body: Node) -> void:
 
 func activate_final_zone() -> void:
 	print("Финальная зона активирована!")
-	
+	ready_to_craft = true
 	
 	# Ден хуярь свою часть сюда
 	# Если сделаешь хуево то этот минотавр выебет тебя в очко

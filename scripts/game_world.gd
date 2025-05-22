@@ -14,6 +14,9 @@ var completed_zones_count = 0  # Сколько зон активировано
 const REQUIRED_ZONES = 3  # Сколько нужно активировать для финала
 
 func _ready() -> void:
+	# make gorgon invisible
+	$Gorgon/AnimatedSprite2D.visible = false
+	
 	print("GameManager готов")
 	print("Начальное значение completed_zones_count:", completed_zones_count)
 	

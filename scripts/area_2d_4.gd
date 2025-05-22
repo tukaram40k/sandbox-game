@@ -26,9 +26,8 @@ func _on_body_entered(body: Node) -> void:
 			else:
 				print("ОШИБКА: GameManager не найден в зоне", zone_name)
 		
-		# Визуальная обратная связь (если есть AnimationPlayer)
-		if has_node("AnimationPlayer"):
-			$AnimationPlayer.play("activate")
+		# невидимый спрайт
+		$HeadPartSprite.visible = false
 		
 		# Отключаем коллизию
 		set_deferred("monitoring", false)
