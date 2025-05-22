@@ -301,8 +301,9 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_51llx"]
-size = Vector2(17, 35)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dms7e"]
+radius = 8.5
+height = 28.0
 
 [node name="Minotaur" type="CharacterBody2D"]
 script = ExtResource("1_is20f")
@@ -317,4 +318,4 @@ frame_progress = 0.464073
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, 36.5)
 rotation = 1.5708
-shape = SubResource("RectangleShape2D_51llx")
+shape = SubResource("CapsuleShape2D_dms7e")

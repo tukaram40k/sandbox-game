@@ -74,6 +74,6 @@ animation = &"idle"
 frame_progress = 0.0477464
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-7, 41)
+position = Vector2(-10, 39)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_fo2hr")

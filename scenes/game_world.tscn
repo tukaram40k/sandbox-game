@@ -8767,7 +8767,8 @@ frame_progress = 0.059679
 script = ExtResource("12_0akx1")
 
 [node name="Gorgon" parent="." instance=ExtResource("6_gcoj8")]
-position = Vector2(94, -174)
+position = Vector2(183, -310)
+scale = Vector2(-1, 1)
 
 [node name="Minotaur" parent="." instance=ExtResource("7_kjyet")]
 position = Vector2(656, -164)
