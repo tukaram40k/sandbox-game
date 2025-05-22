@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://euvsupo67dg7"]
+
+[ext_resource type="Script" path="res://portal.gd" id="1_24tdr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8iujr"]
+size = Vector2(21, 6.25)
+
+[node name="Portal" type="Area2D"]
+script = ExtResource("1_24tdr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8iujr")
+
+[node name="Destination" type="Marker2D" parent="."]
+position = Vector2(66, -57)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
